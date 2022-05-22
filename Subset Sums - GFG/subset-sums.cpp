@@ -17,8 +17,8 @@ public:
     vector<int> subsetSums(vector<int> arr, int N)
     {
         vector<int> ans;
-        int sum=0;
-        helper(arr,ans,0,sum,N);
+        // int sum=0;
+        helper(arr,ans,0,0,N);
         sort(ans.begin(),ans.end());
         return ans;
     }
