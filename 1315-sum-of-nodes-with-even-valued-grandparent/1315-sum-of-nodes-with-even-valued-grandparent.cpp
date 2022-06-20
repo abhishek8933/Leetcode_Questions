@@ -12,22 +12,30 @@
 class Solution {
 public:
     int sum=0;
-    void solve(TreeNode *root,TreeNode *parent,TreeNode *grandParent){
+    void solve(TreeNode *root){
         if(root==NULL){
             return;
         }
-        if(grandParent!=NULL&& grandParent->val%2==0 ){
-            sum+=root->val;
+        if(root->val%2==0){
+        if( root->left && root->left->left!=NULL){
+            sum+=root->left->left->val;
         }
-       
-        solve(root->left,root,parent);
-        solve(root->right,root,parent);
-        
-        
+        if(root->left && root->left->right!=NULL){
+            sum+=root->left->right->val;
+        }
+        if(root->right && root->right->right!=NULL){
+            sum+=root->right->right->val;
+        }
+        if(root->right && root->right->left!=NULL){
+            sum+=root->right->left->val;
+        }
+        }
+        solve(root->left);
+        solve(root->right);
     }
+    
     int sumEvenGrandparent(TreeNode* root) {
-        int i=0;
-        solve(root,NULL,NULL);
+        solve(root);
         return sum;
     }
 };
