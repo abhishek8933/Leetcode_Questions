@@ -7,7 +7,7 @@ public:
             maxm_or|=nums[i];
         }
         int ans=0;
-        for(int i=0;i<num_of_sub;i++){
+        for(int i=1;i<=num_of_sub;i++){
             int orr=0;
             for(int j=0;j<nums.size();j++){
                 if(i&(1<<j)){
