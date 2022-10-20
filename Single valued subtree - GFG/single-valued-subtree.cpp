@@ -103,29 +103,23 @@ class Solution
 {
     public:
     int ans=0;
-    bool find(Node *root,int key){
+    int solve(Node *root){
         if(!root){
-            return true;
+            return 0;
         }
-        return root->data==key &&find(root->left,key) && find(root->right,key);
-        
-        
-    }
-    void solve(Node *root){
-        if(root){
-            
-         bool res=find(root,root->data);
-         if(res){
-             ans++;
-         }
-            solve(root->left);
-            solve(root->right);
+        int left=solve(root->left);
+        int right=solve(root->right);
+        if((left==right && right==root->data)||(left==0 && right==root->data )||(right==0 && left==root->data)||(left==0 && right==0)){
+            ans++;
+            return root->data;
+        }
+        else{
+            return -1;
         }
     }
     int singlevalued(Node *root)
     {
         solve(root);
-        
         return ans;
     }
     
