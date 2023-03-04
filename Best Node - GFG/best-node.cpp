@@ -30,7 +30,7 @@ public:
 // } Driver Code Ends
 class Solution {
   public:
-     long long dfs(int node, vector<int> adj[], vector<int> &A, bool f){
+   long long dfs(int node, vector<int> adj[], vector<int> &A, bool f){
         long long ans = LLONG_MIN;
         for(int child: adj[node]){
             ans = max(ans, dfs(child, adj, A, !f));
@@ -44,18 +44,15 @@ class Solution {
         return ans + nodeVal;
     }
     long long bestNode(int N, vector<int> &A, vector<int> &P) {
-         vector<int> adj[N+1];
-        for(int i=1; i<N; i++){
+        vector<int> adj[N+1];
+        for(int i=1;i<N;i++){
             adj[P[i]].push_back(i+1);
         }
-        
-        long long ans = LLONG_MIN;
-        for(int i=1; i<=N; i++){
-            ans = max(ans, dfs(i, adj, A, 0));
+        long long ans=INT_MIN;
+            for(int i=1;i<=N;i++){
+                ans=max(ans,dfs(i,adj,A,0));
         }
-        
         return ans;
-        
     }
 };
 
