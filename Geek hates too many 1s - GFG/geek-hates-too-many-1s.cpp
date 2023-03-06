@@ -22,7 +22,6 @@ class Solution {
         }
         int ans=stoi(s,0,2);
         return ans;
-
     }
 };
 
