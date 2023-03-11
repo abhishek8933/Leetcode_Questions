@@ -7,7 +7,6 @@ using namespace std;
 class Solution {
   public:
     vector<int> solveQueries(int N, int nums, vector<int> &num, vector<vector<int>> &Q) {
-        
           vector<int>res,precomputed_freq;
         for(int i=0;i<N;i++){
             int freq=1;
